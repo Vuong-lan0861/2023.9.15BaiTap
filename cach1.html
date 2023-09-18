@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cach1</title>
+</head>
+
+<body>
+    <script>
+        function inChuoi() {
+            let longestSubstring = "";
+            let currentSubstring = "";
+
+            for (let i = 0; i < arr.length; i++) {
+                const char = arr[i];
+                const charIndex = currentSubstring.indexOf(char);
+
+                if (charIndex === -1) {
+                    currentSubstring += char;
+                } else {
+                    if (currentSubstring.length > longestSubstring.length) {
+                        longestSubstring = currentSubstring;
+                    }
+                    currentSubstring = currentSubstring.slice(charIndex + 1) + char;
+                }
+            }
+
+            if (currentSubstring.length > longestSubstring.length) {
+                longestSubstring = currentSubstring;
+            }
+
+            console.log(longestSubstring.split(''));
+        }
+
+        inChuoi();
+
+    </script>
+</body>
+
+</html>
