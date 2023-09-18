@@ -9,13 +9,14 @@
 
 <body>
     <script>
-        function inChuoi() {
+        function findLongestUniqueSubstring(input) {
             let longestSubstring = "";
             let currentSubstring = "";
+            let startIndex = 0;
 
-            for (let i = 0; i < arr.length; i++) {
-                const char = arr[i];
-                const charIndex = currentSubstring.indexOf(char);
+            for (let i = 0; i < input.length; i++) {
+                let char = input[i];
+                let charIndex = currentSubstring.indexOf(char);
 
                 if (charIndex === -1) {
                     currentSubstring += char;
@@ -23,18 +24,24 @@
                     if (currentSubstring.length > longestSubstring.length) {
                         longestSubstring = currentSubstring;
                     }
-                    currentSubstring = currentSubstring.slice(charIndex + 1) + char;
+                    startIndex += charIndex + 1;
+                    i = startIndex - 1;
+                    currentSubstring = "";
                 }
             }
 
+            // Kiểm tra xem chuỗi cuối cùng có dài hơn chuỗi dài nhất không trùng lặp hiện tại.
             if (currentSubstring.length > longestSubstring.length) {
                 longestSubstring = currentSubstring;
             }
 
-            console.log(longestSubstring.split(''));
+            return longestSubstring;
         }
 
-        inChuoi();
+        let userInput = prompt("Nhập chuỗi:");
+        let longestUniqueSubstring = findLongestUniqueSubstring(userInput);
+
+        alert("Chuỗi dài nhất không trùng lặp là: " + longestUniqueSubstring);
 
     </script>
 </body>
